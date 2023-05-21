@@ -24,4 +24,11 @@ class CalcServiceTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @ParameterizedTest
+    @CsvFileSource(resources = "test_data.csv")
+    public void testCalculateWithParams (int income, int expenses, int threshold, int expected) {
+        CalcService Service = new CalcService();
+        int actual = Service.calculate (income,expenses,threshold);
+        Assertions.assertEquals(expected,actual);
+    }
 }
